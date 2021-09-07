@@ -3,7 +3,6 @@ package com.gvdw.datatables_server_side.models;
 import lombok.AllArgsConstructor;
 
 import javax.persistence.*;
-import java.util.List;
 
 /**
  * @author Gullian Van Der Walt
@@ -22,7 +21,11 @@ public class DataTableStates {
     @Column(name = "state_json")
     private String stateJson;
 
-
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinTable(name = "data_table_sate_products",
+                joinColumns = { @JoinColumn(name = "data_table_state_id", referencedColumnName = "data_table_state_id") },
+            inverseJoinColumns = { @JoinColumn(name = "product_id", referencedColumnName = "product_id") })
+    private Product products;
 
     public DataTableStates() {
     }
@@ -42,6 +45,14 @@ public class DataTableStates {
 
     public void setStateJson(String stateJson) {
         this.stateJson = stateJson;
+    }
+
+    public Product getProducts() {
+        return products;
+    }
+
+    public void setProducts(Product products) {
+        this.products = products;
     }
 }
 

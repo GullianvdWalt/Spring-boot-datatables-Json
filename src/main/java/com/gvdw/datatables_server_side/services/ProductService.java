@@ -13,4 +13,5 @@ import java.util.function.Predicate;
 public interface ProductService {
     List<Product> getProducts();
     Product getProductById(Integer id);
+    void save(Product product);
 }

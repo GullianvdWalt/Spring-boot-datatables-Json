@@ -7,24 +7,41 @@ function initProductTable(){
         processing: true,
         stateSave:true,
         serverSide: true,
-        // ajax:{
-        //   url: "/products",
-        //   type: "POST",
-        //   dataType: "json",
-        //   contentType: "application/json",
-        //   data: d => ( JSON.stringify(d))
-        // },
         stateSaveCallback: function (settings, data) {
-            console.log(data)
-            // Send an Ajax request to the server with the state object
-            // $.ajax({
-            //     "url": "/state_save",
-            //     "data": data,
-            //     "dataType": "json",
-            //     "type": "POST",
-            //     "success": function () {
-            //     }
-            // });
+            let formData = new FormData();
+            formData.append("state", JSON.stringify(data));
+            $.ajax({
+                url: "/products/state_save",
+                data: formData,
+                dataType: "json",
+                type: "POST",
+                processData: false,
+                contentType: false,
+                error: function(e){
+                  console.log((e));
+                },
+                success: function (e) {
+                    console.log(e);
+                    if(e === "success"){
+                        console.log("state saved");
+                    }
+                }
+            });
+        },
+        stateLoadCallback: function (settings, callback) {
+            let state = '';
+            $.ajax( {
+                url: '/products/state_load',
+                dataType: 'json',
+                error: function(response){
+                  console.log(response);
+                },
+                success: function (response) {
+                    console.log(response);
+                    state = response;
+                }
+            });
+            return state;
         },
         language: {
         sInfoEmpty: "0 Products",
