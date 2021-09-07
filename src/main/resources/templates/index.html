@@ -3,55 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>Spring Boot DataTables State Server Side</title>
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.11.1/datatables.min.css"/>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container">
-        <a class="navbar-brand" href="/">DataTable Server Side</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-                aria-controls="navbarResponsive"
-                aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-    </div>
-</nav>
-
+<div th:insert="navBar.html :: nav"></div>
 <div class="container">
     <div class="row">
         <div class="col-lg-10 my-5">
-            <table id="productTable" class="table table-bordered table-responsive" style="width: 100%">
-                <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Brand</th>
-                    <th>Price</th>
-                    <th>Units</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>Name</td>
-                    <td>Position</td>
-                    <td>112</td>
-                    <td>Office</td>
-                    <td>Start date</td>
-                    <td>Salary</td>
-                </tr>
-                </tbody>
-            </table>
+            <h1>Home</h1>
         </div>
     </div>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.11.1/datatables.min.js"></script>
-<script th:src="@{assets/index.js}"></script>
-
 </body>
 </html>

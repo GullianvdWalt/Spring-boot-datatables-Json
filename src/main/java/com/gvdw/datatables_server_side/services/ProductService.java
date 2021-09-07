@@ -1,10 +1,10 @@
 package com.gvdw.datatables_server_side.services;
 
 import com.gvdw.datatables_server_side.models.Product;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.function.Predicate;
 
 /**
  * @author Gullian Van Der Walt
