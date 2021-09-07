@@ -4,9 +4,8 @@ $(document).ready(function() {
 
 function initProductTable(){
     let productTable = $('#productTable').DataTable( {
-        stripeClasses: [],
-        autoWidth: false,
         processing: true,
+        serverSide: true,
         language: {
             sInfoEmpty: "0 Products",
             emptyTable: "No products added yet",
