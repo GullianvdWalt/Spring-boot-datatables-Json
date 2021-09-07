@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  * @author Gullian Van Der Walt
- * Created at 08:41 on Sep, 2021
+ * Created at 09:10 on Sep, 2021
  */
 public interface ProductRepository extends JpaRepository<Product, Integer> {
 }

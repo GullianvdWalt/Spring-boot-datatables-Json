@@ -10,8 +10,6 @@ import javax.persistence.*;
  * Created at 08:11 on Sep, 2021
  */
 @Entity
-@Getter
-@Setter
 @Table(name = "product")
 public class Product {
     @Id
@@ -36,4 +34,51 @@ public class Product {
         this.units = units;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    public Integer getUnits() {
+        return units;
+    }
+
+    public void setUnits(Integer units) {
+        this.units = units;
+    }
 }
