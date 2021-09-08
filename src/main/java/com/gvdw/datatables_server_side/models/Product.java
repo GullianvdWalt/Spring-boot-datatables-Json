@@ -1,5 +1,6 @@
 package com.gvdw.datatables_server_side.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -25,6 +26,7 @@ public class Product {
     private Integer units;
 
     @OneToOne(mappedBy = "products")
+    @JsonIgnore
     private DataTableStates dataTableStates;
 
     public Product() {

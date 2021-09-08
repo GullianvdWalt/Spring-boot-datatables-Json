@@ -1,6 +1,7 @@
 package com.gvdw.datatables_server_side.services;
 
 import com.gvdw.datatables_server_side.models.DataTableStates;
+import com.gvdw.datatables_server_side.models.Product;
 import com.gvdw.datatables_server_side.repositories.DataTableStatesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,10 +16,11 @@ import java.util.List;
 public class DataTablesStatesServiceImpl implements DataTablesStatesService{
 
     private final DataTableStatesRepository dataTableStatesRepository;
-
+    private final ProductService productService;
     @Autowired
-    public DataTablesStatesServiceImpl(DataTableStatesRepository dataTableStatesRepository) {
+    public DataTablesStatesServiceImpl(DataTableStatesRepository dataTableStatesRepository, ProductService productService) {
         this.dataTableStatesRepository = dataTableStatesRepository;
+        this.productService = productService;
     }
 
     @Override
@@ -34,5 +36,11 @@ public class DataTablesStatesServiceImpl implements DataTablesStatesService{
     @Override
     public List<DataTableStates> getDataTableStates() {
         return dataTableStatesRepository.findAll();
+    }
+
+    @Override
+    public String getStateByProductId(int id) {
+        Product product = productService.getProductById(id);
+        return product.getDataTableStates().getStateJson();
     }
 }

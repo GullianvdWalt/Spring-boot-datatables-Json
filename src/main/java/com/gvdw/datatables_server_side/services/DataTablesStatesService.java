@@ -12,4 +12,5 @@ public interface DataTablesStatesService {
     void saveState(DataTableStates dataTablesState);
     DataTableStates findDataTableStates(Integer id);
     List<DataTableStates> getDataTableStates();
+    String getStateByProductId(int id);
 }

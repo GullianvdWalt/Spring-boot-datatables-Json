@@ -1,5 +1,6 @@
 package com.gvdw.datatables_server_side.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 
 import javax.persistence.*;
@@ -25,6 +26,7 @@ public class DataTableStates {
     @JoinTable(name = "data_table_sate_products",
                 joinColumns = { @JoinColumn(name = "data_table_state_id", referencedColumnName = "data_table_state_id") },
             inverseJoinColumns = { @JoinColumn(name = "product_id", referencedColumnName = "product_id") })
+    @JsonIgnore
     private Product products;
 
     public DataTableStates() {

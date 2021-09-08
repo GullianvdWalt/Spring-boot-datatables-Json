@@ -8,4 +8,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * Created at 15:41 on Sep, 2021
  */
 public interface DataTableStatesRepository extends JpaRepository<DataTableStates, Integer> {
+
 }
