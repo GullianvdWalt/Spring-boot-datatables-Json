@@ -3,10 +3,11 @@ $(document).ready(function() {
 });
 
 function initProductTable(){
+    let currentState = state;
     let productTable = $('#productTable').DataTable( {
         processing: true,
         stateSave:true,
-        serverSide: true,
+        //serverSide: true,
         language: {
         sInfoEmpty: "0 Products",
         emptyTable: "No products added yet",
@@ -18,6 +19,8 @@ function initProductTable(){
         order: [[ 0, "asc" ]],
         stateSaveCallback: function (settings, data) {
             let formData = new FormData();
+            console.log("Original State Data");
+            console.log(data);
             // console.log(JSON.stringify(data));
             formData.append("state", JSON.stringify(data));
             $.ajax({
@@ -28,31 +31,34 @@ function initProductTable(){
                 contentType: false,
                 success: function (e) {
                     if(e === "success"){
-                        console.log("state saved");
+                        console.log("State Saved");
+                        state = data;
+                    }else{
+                        console.log("State Save Error " + e);
                     }
                 },
                 error: function(e){
-                    console.log((e));
+                    console.log("State Save Error " + e);
                 },
             });
         },
         stateLoadCallback: function (settings) {
-            let state = '';
-            $.ajax( {
-                url: '/products/state_load',
-                dataType: 'json',
-                error: function(response){
-                    console.log("Error");
-                    console.log(response.responseText);
-                },
-                success: function (response) {
-                    console.log("Success");
-                    console.log(response);
-                    state = response;
-                    //callback ( state );
-                }
-            });
-            return state;
+            // let state = '';
+            // $.ajax( {
+            //     url: '/products/state_load',
+            //     dataType: 'json',
+            //     async: false,
+            //     type: "POST",
+            //     error: function(response){
+            //         console.log("State Load Error " + response);
+            //     },
+            //     success: function (stateJson) {
+            //         console.log("Load Success: ");
+            //         console.log(stateJson)
+            //         state = stateJson;
+            //     }
+            // });
+            return JSON.parse(state);
         },
         aoColumns: [
             { mData: 'id' },

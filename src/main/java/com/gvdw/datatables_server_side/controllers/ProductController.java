@@ -4,12 +4,9 @@ import com.gvdw.datatables_server_side.models.DataTableStates;
 import com.gvdw.datatables_server_side.models.Product;
 import com.gvdw.datatables_server_side.services.DataTablesStatesService;
 import com.gvdw.datatables_server_side.services.ProductService;
-import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.json.JSONObject;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -58,7 +55,7 @@ public class ProductController {
         return "success";
     }
 
-    @GetMapping("/products/state_load")
+    @PostMapping("/products/state_load")
     @ResponseBody
     public String loadTableState(){
         DataTableStates dataTableState = dataTableStatesService.getDataTableStates().get(0);
